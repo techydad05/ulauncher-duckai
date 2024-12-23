@@ -6,7 +6,7 @@ from ulauncher.api.shared.action.RenderResultListAction import RenderResultListA
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 from ulauncher.api.shared.action.CopyToClipboardAction import CopyToClipboardAction
 
-from duckduckgo_search import DDGS
+from duckduckgo_search import ddgs
 
 
 class DemoExtension(Extension):
@@ -32,8 +32,8 @@ class KeywordQueryEventListener(EventListener):
             return RenderResultListAction([result])
 
         try:
-            # Use DDGS to fetch results
-            ddgs_instance = DDGS()
+            # Use ddgs to fetch results
+            ddgs_instance = ddgs()
             ai_answer = ddgs_instance.chat(
                 keywords=f"{default_prompt}\n\n{query}",
                 model=model,
